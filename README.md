@@ -50,4 +50,5 @@ A Java-based GUI application for an intelligent vending machine that provides cu
 ### Main Interface
 ![Main UI](Screenshot1.png)
 
-
+### User Info Page
+![User Info](Screenshot2.png)

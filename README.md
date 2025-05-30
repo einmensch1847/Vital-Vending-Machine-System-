@@ -45,3 +45,9 @@ A Java-based GUI application for an intelligent vending machine that provides cu
    ```bash
    git clone https://github.com/einmensch1847/Vital-Vending-Machine-System-.git
    cd Vital-Vending-Machine-System-
+## 📸 Screenshots
+
+### Main Interface
+![Main UI](Screenshot (1).png)
+
+

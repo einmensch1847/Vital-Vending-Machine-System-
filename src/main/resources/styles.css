@@ -1,0 +1,58 @@
+
+.slider {
+    -fx-padding: 15px;
+}
+.slider .track {
+    -fx-background-color: white;
+    -fx-background-radius: 25px;
+    -fx-border-color: black;
+    -fx-border-width: 4px;
+    -fx-border-radius: 25px;
+    -fx-pref-height: 14px;
+}
+
+.slider .thumb {
+    -fx-background-color: #29B6D1;
+    -fx-background-radius: 50%;
+    -fx-border-color: black;
+    -fx-border-width: 5px;
+    -fx-border-radius: 50%;
+    -fx-pref-width: 38px;
+    -fx-pref-height: 38px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.slider .axis {
+    -fx-tick-label-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+}
+
+.slider .tick-mark {
+    -fx-stroke: black;
+    -fx-stroke-width: 2px;
+}
+
+.toggle-button {
+    -fx-background-color: white;
+    -fx-background-radius: 50px;
+    -fx-border-color: black;
+    -fx-border-width: 4px;
+    -fx-border-radius: 50px;
+    -fx-text-fill: black;
+    -fx-font-size: 20px;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-weight: bold;
+    -fx-padding: 12px 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #29B6D1;
+    -fx-text-fill: white;
+    -fx-border-color: black;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}

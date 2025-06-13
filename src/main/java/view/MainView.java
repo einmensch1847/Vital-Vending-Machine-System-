@@ -116,7 +116,7 @@ public class MainView extends VBox {
 //            disableButton(1);
 //        }
         btn1Box = createImageButton("file:21.png", "10000 تومان", e -> {
-            QRCodeGenerator newPage = new QRCodeGenerator(primaryStage, "https://menschwoodworks.ir/");
+            Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
             try {
                 if (arduino != null) arduino.sendCommand("BTN1");
@@ -126,7 +126,7 @@ public class MainView extends VBox {
         });
 
         btn2Box = createImageButton("file:31.png", "12000 تومان", e -> {
-            Call_Admin newPage = new Call_Admin(primaryStage);
+            Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
             try {
                 if (arduino != null) arduino.sendCommand("BTN2");
@@ -186,6 +186,7 @@ public class MainView extends VBox {
         VBox.setVgrow(vbox, Priority.ALWAYS);
 
         footer = createFooter();
+        disableButton(2);
 
         this.getChildren().addAll(timeLabel , vbox, exitContainer, footer);
         this.setSpacing(10);

@@ -186,7 +186,7 @@ public class MainView extends VBox {
         VBox.setVgrow(vbox, Priority.ALWAYS);
 
         footer = createFooter();
-        disableButton(2);
+//        disableButton(2);
 
         this.getChildren().addAll(timeLabel , vbox, exitContainer, footer);
         this.setSpacing(10);

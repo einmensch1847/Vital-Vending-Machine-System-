@@ -25,7 +25,7 @@ public class btn6_Controller extends VBox {
     public btn6_Controller(Stage primaryStage) {
 //        **********************************************************************************
 
-        arduino = new ArduinoConnector("COM6"); // نام پورت آردوینوت رو به درستی وارد کن
+        //arduino = new ArduinoConnector("COM6"); // نام پورت آردوینوت رو به درستی وارد کن
 
 //        **********************************************************************************
         this.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
@@ -84,7 +84,7 @@ public class btn6_Controller extends VBox {
         weightSlider.setShowTickLabels(true);
 
         weightSlider.setStyle(
-                        "-fx-font-size: 22px; " +
+                "-fx-font-size: 22px; " +
                         "-fx-control-inner-background: rgba(38,69,122,0.7);"
         );
 
@@ -106,7 +106,7 @@ public class btn6_Controller extends VBox {
         ageSlider.setShowTickLabels(true);
 
         ageSlider.setStyle(
-                        "-fx-font-size: 22px; " +
+                "-fx-font-size: 22px; " +
                         "-fx-control-inner-background: rgba(38,69,122,0.7);"
         );
 
@@ -131,12 +131,14 @@ public class btn6_Controller extends VBox {
 
         submitButton.setOnAction(event -> {
 
-            Waiting_page newPage = new Waiting_page(primaryStage);
-//            Scene newScene = new Scene(newPage, 800, 600);
-//            primaryStage.setScene(newScene);
-//            primaryStage.setMaximized(true);
-//            primaryStage.setFullScreen(true);
-            switchSceneWithFadeTransition(primaryStage, newPage);
+            MainView.btn6(true , primaryStage);
+
+//            Waiting_page newPage = new Waiting_page(primaryStage);
+////            Scene newScene = new Scene(newPage, 800, 600);
+////            primaryStage.setScene(newScene);
+////            primaryStage.setMaximized(true);
+////            primaryStage.setFullScreen(true);
+//            switchSceneWithFadeTransition(primaryStage, newPage);
 
             gender = genderGroup.getSelectedToggle() == maleButton ? "مرد" : "زن";
             weight = weightSlider.getValue();
@@ -146,11 +148,7 @@ public class btn6_Controller extends VBox {
             System.out.println("وزن: " + weight);
             System.out.println("سن: " + age);
 
-            try {
-                if (arduino != null) arduino.sendCommand("BTN6#" + gender + "#" + weight + "#" + age);
-            } catch (IOException ex) {
-                System.err.println("خطا در ارسال فرمان به آردوینو: " + ex.getMessage());
-            }
+//            if (arduino != null) arduino.sendCommand("B6");
 
         });
 

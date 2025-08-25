@@ -20,22 +20,22 @@ public class ArduinoCommandHandler {
                     break;
 
                 case "E1":
-                    MainView.disableButton(1);
+                    //MainView.disableButton(1);
                     break;
                 case "E2":
-                    MainView.disableButton(2);
+                    //MainView.disableButton(2);
                     break;
                 case "E3":
-                    MainView.disableButton(3);
+                    //MainView.disableButton(3);
                     break;
                 case "E4":
-                    MainView.disableButton(4);
+                    //MainView.disableButton(4);
                     break;
                 case "E5":
-                    MainView.disableButton(5);
+                    //MainView.disableButton(5);
                     break;
                 case "E6":
-                    MainView.disableButton(6);
+                    //MainView.disableButton(6);
                     break;
 
                 case "ERR":  // مثلاً آردوینو خطای سخت‌افزاری یا اضطراری شناسایی کرده

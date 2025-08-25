@@ -38,13 +38,17 @@ public class MainView extends VBox {
     private Button exitButton;
     private VBox btn1Box, btn2Box, btn3Box, btn4Box, btn5Box, btn6Box;
     private HBox footer;
-    private ArduinoConnector arduino;
+    private static ArduinoConnector arduino;
     private static MainView instance;
 
 
     public MainView(Stage primaryStage) {
         instance = this;
-//        loadStateFromFile();
+
+        // فقط یک‌بار باز کردن پورت
+        if (arduino == null) {
+            arduino = new ArduinoConnector("COM6");
+        }
 
         Label timeLabel = new Label();
         Timeline timeline1 = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
@@ -53,14 +57,6 @@ public class MainView extends VBox {
         }));
 
 //        **********************************************************************************
-
-        arduino = new ArduinoConnector("COM6"); // نام پورت آردوینوت رو به درستی وارد کن
-        ArduinoCommandHandler handler = new ArduinoCommandHandler(primaryStage);
-
-        arduino.setCommandListener(command -> {
-            handler.handleCommand(command); // هر وقت آردوینو چیزی فرستاد، این اجرا میشه
-        });
-
 
 //        **********************************************************************************
 
@@ -118,60 +114,38 @@ public class MainView extends VBox {
         btn1Box = createImageButton("file:21.png", "10000 تومان", e -> {
             Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
-            try {
-                if (arduino != null) arduino.sendCommand("BTN1");
-            } catch (IOException ex) {
-                System.err.println("خطا در ارسال فرمان به آردوینو: " + ex.getMessage());
-            }
+            if (arduino != null) arduino.sendCommand("B1", primaryStage);
         });
 
         btn2Box = createImageButton("file:31.png", "12000 تومان", e -> {
             Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
-            try {
-                if (arduino != null) arduino.sendCommand("BTN2");
-            } catch (IOException ex) {
-                System.err.println("خطا در ارسال فرمان به آردوینو: " + ex.getMessage());
-            }
+            if (arduino != null) arduino.sendCommand("B2", primaryStage);
 
         });
 
         btn3Box = createImageButton("file:41.png", "15000 تومان", e -> {
             Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
-            try {
-                if (arduino != null) arduino.sendCommand("BTN3");
-            } catch (IOException ex) {
-                System.err.println("خطا در ارسال فرمان به آردوینو: " + ex.getMessage());
-            }
-
+            if (arduino != null) arduino.sendCommand("B3", primaryStage);
         });
 
         btn4Box = createImageButton("file:51.png", "11000 تومان", e -> {
             Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
-            try {
-                if (arduino != null) arduino.sendCommand("BTN4");
-            } catch (IOException ex) {
-                System.err.println("خطا در ارسال فرمان به آردوینو: " + ex.getMessage());
-            }
-
+            if (arduino != null) arduino.sendCommand("B4", primaryStage);
         });
 
         btn5Box = createImageButton("file:61.png", "13000 تومان", e -> {
             Waiting_page newPage = new Waiting_page(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
-            try {
-                if (arduino != null) arduino.sendCommand("BTN5");
-            } catch (IOException ex) {
-                System.err.println("خطا در ارسال فرمان به آردوینو: " + ex.getMessage());
-            }
-
+            if (arduino != null) arduino.sendCommand("B5", primaryStage);
         });
 
         btn6Box = createImageButton("file:71.png", "18000 تومان", e -> {
             btn6_Controller newPage = new btn6_Controller(primaryStage);
             switchSceneWithFadeTransition(primaryStage, newPage);
+            btn6(false , primaryStage);
         });
 
 
@@ -274,7 +248,7 @@ public class MainView extends VBox {
 
 
 
-    private void switchSceneWithFadeTransition(Stage primaryStage, Parent newPage) {
+    static void switchSceneWithFadeTransition(Stage primaryStage, Parent newPage) {
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), primaryStage.getScene().getRoot());
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
@@ -339,6 +313,14 @@ public class MainView extends VBox {
         }
     }
 
+    public static void btn6(boolean btn6 , Stage primaryStage) {
+        if (btn6) {
+            Waiting_page newPage = new Waiting_page(primaryStage);
+            switchSceneWithFadeTransition(primaryStage, newPage);
+            if (arduino != null) arduino.sendCommand("B6", primaryStage);
+        }
+    }
+
 //    public static void saveStateToFile() {
 //        try (BufferedWriter writer = new BufferedWriter(new FileWriter("state.txt"))) {
 //            for (int i = 0; i < state.length; i++) {
@@ -365,4 +347,6 @@ public class MainView extends VBox {
 //            System.err.println("خطا در بارگذاری state: " + e.getMessage());
 //        }
 //    }
+
+
 }
